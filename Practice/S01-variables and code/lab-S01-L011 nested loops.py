@@ -50,5 +50,5 @@ print(len(routes))
  
  
 routes = [ (start, stop) for start in ports for stop in ports if start < stop]
-print(routes)
+print(routes) 
 print(len(routes))
