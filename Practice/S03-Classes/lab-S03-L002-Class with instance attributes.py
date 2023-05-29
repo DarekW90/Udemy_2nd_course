@@ -1,39 +1,51 @@
-# carBrand = 'Seat'
-# carModel = 'Ibiza'
-# carIsAirBagOK = True
-# carIsPaintingOK = True
-# carIsMechanicOK = True
+'''
+Szef cukierni w której pracujesz poprosił Cię o napisanie programu, który koniecznie ma działać obiektowo!
+Zaczynamy od zdefiniowania klasy Cake, która ma posiadać atrybuty:
+    -name opisujące nazwę produktu
+    -kind opisujący rodzaj wypieku np. torty, ciastka, muffinki, bezy
+    -taste z głównym smakiem
+    -additives - zawierający listę dodatków do danego ciasta, np. owoce, posypki, polewy itp, jeżeli ciasto nie ma dodatków, to będzie to pusta lista
+    -filling - opis nadzienia, jeżeli dane ciasto nie ma nadzienia, to ma to być pusty napis
+    -... możesz dodać dalsze własne pomysły :)
 
-car_01 = {
-    'carBrand': 'Seat',
-    'carModel': 'Ibiza',
-    'carIsAirBagOK': True,
-    'carIsPaintingOK': True,
-    'carIsMechanicOK': True
-}
-car_02 = {
-    'carBrand': 'Opel',
-    'carModel': 'Corsa',
-    'carIsAirBagOK': True,
-    'carIsPaintingOK': False,
-    'carIsMechanicOK': True
-}
+Po zdefiniowaniu klasy utwórz kilka instancji tej klasy, to dobry moment na wzbogacenie słownictwa w zakresie słodkości w języku angielskim, ale jak wolisz - możesz to robić po polsku
 
-# def IsCarDamaged (carIsAirBagOK, carIsPaintingOK, carIsMechanicOK):
-#     return not (carIsAirBagOK and carIsPaintingOK and carIsMechanicOK)
+Utwórz listę bakery_offer i dodaj do niej instancje wcześniej utworzonych obiektów klasy Cake
 
+Napisz pętlę przechodzącą przez wszystkie instancje klasy znajdujące się na liście bakery_offer i wyświetl coś w rodzaju (dane pochodzące z instancji zostały wytłuszczone):
 
-def IsCarDamaged(aCar):
-    return not (aCar['carIsAirBagOK'] and aCar['carIsPaintingOK'] and aCar['carIsMechanicOK'])
+    Today in our offer:
+    Vanilla Cake - (cake) main taste: vanilla with additives of ['chocolade', 'nuts'], filled with cream
+    Chocolade Muffin - (muffin) main taste: chocolade with additives of ['chocolade'], filled with
+    Super Sweet Maringue - (meringue) main taste: very sweet with additives of [], filled with
 
+UWAGA: w kolejnych lekcjach i kolejnych zadaniach będę kontynuował temat cukierni. W większości przypadków zadanie będzie polegało na rozbudowaniu tej klasy. Jeżeli chcesz wykonać wiecej zadań pozwalających Ci lepiej opanować tematykę klas, podrzucam kilka pomysłów poniżej. Do tych pomysłów nie publikuję propozycji rozwiązań. Za to możesz takie własne rozwiązania i propozycje publikować w sekcji Q&A . Możesz też próbować budowania klas z takimi tematami jak sam zechcesz.
 
-# print(IsCarDamaged(car_01['carIsAirBagOK'],car_01['carIsPaintingOK'],car_01['carIsMechanicOK']))
-print(IsCarDamaged(car_01))
-print(IsCarDamaged(car_02))
+    "Sklep z używanymi telefonami komórkowymi"
+    "Warsztat wulkanizacyjny"
+    "Inwentaryzacja sprzętu komputerowego w firmie"
+    "Studio fitness"
+    "Karty gwarancyjne"
+    "Firma przewozowa - taxi bagażowe"
+    "Biuro podróży"
+'''
+class Cake:
+    def __init__(self, name, kind, taste, additives, filling):
+        self.name = name
+        self.kind = kind
+        self.taste = taste
+        self.additives = additives
+        self.filling = filling
 
+cake_01 = Cake('Vanilla Cake', 'cake', 'vanilla', ['chocolate', 'nuts'], 'cream')
+cake_02 = Cake('Chocolate Muffin', 'muffin', 'chocolate', ['chocolate'], '')
+cake_03 = Cake('Super Sweet Maringue', 'maringue', 'very sweet', [], '')
 
-cars = [car_01, car_02]
+bakery_offer = []
+bakery_offer.append(cake_01)
+bakery_offer.append(cake_02)
+bakery_offer.append(cake_03)
 
-for c in cars:
-    print("{} {} damaged = {}".format(c['carBrand'],
-        c['carModel'], IsCarDamaged(c)))
+print('Today in our offer')
+for c in bakery_offer:
+    print('{} - ({}) main taste: {} with additives of {}, filled with {}'.format(c.name, c.kind, c.taste, c.additives, c.filling))
